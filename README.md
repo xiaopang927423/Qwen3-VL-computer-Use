@@ -35,7 +35,7 @@
 
 1. 克隆项目:
    ```bash
-   git clone https://github.com/xiaopang927423/Qwen3-VL-computer-Use.git
+   git clone <repository-url>
    cd Qwen3-VL-cookbook/pythonProject6
    ```
 
@@ -55,9 +55,16 @@
 
 ### 基本使用
 
-运行主程序:
+运行测试示例:
 ```bash
-python computer_agent.py
+# 测试pynput库基本功能
+python test/test_pynput.py
+
+# 测试计算机操作功能
+python test/test_action.py
+
+# 测试完整的GUI操作流程
+python test/cookbook_computer.py
 ```
 
 程序启动后会提示输入您的需求，例如"打开VSCode"或"在浏览器中搜索Qwen3-VL"。
@@ -75,15 +82,20 @@ python computer_agent.py
 
 ```
 .
-├── cookbook_computer_use.py     # 主程序入口
+├── computer_agent.py                # 主程序入口
+├── README.md                        # 项目说明文档
+├── requirements.txt                 # 项目依赖
 ├── utils/
-│   ├── agent_function_call.py   # 计算机操作工具实现
-│   ├── take_screenshot.py       # 屏幕截图功能
-│   └── chat_history.py          # 对话历史管理
+│   ├── agent_function_call.py       # 计算机操作工具实现
+│   ├── take_screenshot.py           # 屏幕截图功能
+│   ├── chat_history.py              # 对话历史管理
+│   └── screenshots/                 # 截图存储目录
 ├── test/
-│   ├── test_action.py           # 操作测试
-│   └── test_pynput.py           # pynput库功能测试
-└── .env                         # 环境变量配置文件
+│   ├── cookbook_computer.py         # 完整GUI操作测试
+│   ├── test_action.py               # 操作测试
+│   ├── test_pynput.py               # pynput库功能测试
+│   └── output_image.png             # 输出示例图片
+└── .env                             # 环境变量配置文件(需要手动创建)
 ```
 
 ## 核心模块说明
@@ -95,13 +107,34 @@ python computer_agent.py
 - 键盘输入: 文本输入、按键组合
 - 系统操作: 滚动、等待、任务终止
 
+支持的具体操作包括:
+- `key`: 执行按键操作
+- `type`: 输入文本
+- `mouse_move`: 移动鼠标
+- `left_click`: 左键点击
+- `left_click_drag`: 左键拖拽
+- `right_click`: 右键点击
+- `middle_click`: 中键点击
+- `double_click`: 双击
+- `triple_click`: 三击
+- `scroll`: 滚动操作
+- `wait`: 等待指定时间
+- `terminate`: 终止任务
+- `answer`: 回答问题
+
 ### 屏幕截图 (utils/take_screenshot.py)
 
-负责捕获屏幕图像并调整到合适的分辨率供模型分析。
+负责捕获屏幕图像并调整到合适的分辨率供模型分析。默认目标分辨率为1728x1117。
 
 ### 对话管理 (utils/chat_history.py)
 
 管理与Qwen3-VL模型的对话历史，包括系统提示、用户指令和模型响应。
+
+### 主要测试文件
+
+1. **test_pynput.py**: 测试pynput库的基础功能，包括鼠标和键盘控制
+2. **test_action.py**: 测试计算机操作的执行流程
+3. **cookbook_computer.py**: 完整的GUI操作测试，演示如何结合截图和Qwen3-VL模型执行操作
 
 ## 注意事项
 
@@ -109,17 +142,20 @@ python computer_agent.py
 2. **分辨率适配**: 程序会自动调整屏幕截图分辨率以匹配模型要求
 3. **操作延迟**: 某些操作(如程序启动)可能需要等待时间，程序内置了等待机制
 4. **API密钥**: 需要有效的DashScope API密钥才能访问Qwen3-VL模型
+5. **坐标系统**: 鼠标操作使用相对坐标系统(0-1000)，会自动转换为实际屏幕坐标
 
 ## 测试
 
 项目包含以下测试文件:
 - `test_pynput.py`: 测试pynput库的基本功能
 - `test_action.py`: 测试操作执行流程
+- `cookbook_computer.py`: 完整的GUI操作测试
 
 运行测试:
 ```bash
 python test/test_pynput.py
 python test/test_action.py
+python test/cookbook_computer.py
 ```
 
 ## 依赖库
@@ -129,6 +165,7 @@ python test/test_action.py
 - pyscreenshot: 屏幕截图
 - python-dotenv: 环境变量管理
 - qwen-agent: Qwen模型工具包
+- Pillow: 图像处理
 
 ## 许可证
 
