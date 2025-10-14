@@ -57,7 +57,7 @@
 
 运行主程序:
 ```bash
-python cookbook_computer_use.py
+python computer_agent.py
 ```
 
 程序启动后会提示输入您的需求，例如"打开VSCode"或"在浏览器中搜索Qwen3-VL"。
