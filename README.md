@@ -28,7 +28,7 @@
 
 ### 环境要求
 
-- Python 3。10+
+- Python 3.10+
 - DashScope API密钥 (阿里云Qwen模型访问权限)
 
 ### 安装步骤
