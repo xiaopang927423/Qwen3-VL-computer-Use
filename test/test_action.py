@@ -1,5 +1,5 @@
 from utils.take_screenshot import take_screenshot
-from cookbook_computer_use import get_qwen3_vl_action
+from computer_agent import get_qwen3_vl_action
 screenshot_path = take_screenshot()
 
 action,  computer_use = get_qwen3_vl_action(screenshot_path, "打开vscode","qwen3-vl-235b-a22b-instruct")
