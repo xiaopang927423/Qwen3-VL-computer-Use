@@ -9,7 +9,7 @@ dotenv.load_dotenv("/Users/zjlz/Qwen3-VL-cookbook/pythonProject6/.env")
 
 # 图片编码
 
-def get_qwen3_vl_action(messages, model_id, min_pixels=3136, max_pixels=12845056):
+def get_qwen3_vl_action(messages, model_id):
     """
     使用 Qwen 模型执行 GUI 接地，以解释用户在屏幕截图上的查询。
     :param messages:
