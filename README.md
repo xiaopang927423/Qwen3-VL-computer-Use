@@ -35,7 +35,7 @@
 
 1. 克隆项目:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/xiaopang927423/Qwen3-VL-computer-Use.git
    cd Qwen3-VL-cookbook/pythonProject6
    ```
 
