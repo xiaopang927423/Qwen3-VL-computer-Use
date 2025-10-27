@@ -58,7 +58,7 @@ while True:
     print(f"Qwen3 将要采取第{action_num}步行动:{action["arguments"]["action"]}")
     if action["arguments"]["action"] in ["left_click", "right_click", "middle_click", "double_click", "triple_click","mouse_move","left_click_drag"]:
         coordinate_relative = action['arguments']['coordinate']
-        coordinate_absolute = [coordinate_relative[0] / 1000 * 1728, coordinate_relative[1] / 1000 * 1117]
+        coordinate_absolute = [coordinate_relative[0] / 1000 * 1728, coordinate_relative[1] / 1000 * 1117] #此处为相对坐标转化为绝对坐标，1728和1117为显示屏实际分辨率
         action['arguments']['coordinate'] = coordinate_absolute
     print(action)
     computer_use.call(action['arguments'])
